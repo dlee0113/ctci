@@ -1,9 +1,13 @@
 package Question1_1;
 
+// reference
+// http://stackoverflow.com/questions/19484406/detecting-if-a-string-has-unique-characters-comparing-my-solution-to-cracking
+
+
 public class Question {
 
 	public static boolean isUniqueChars(String str) {
-		if (str.length() > 256) {
+		if (str.length() > 256) { // size of extended ASCII table (http://www.ascii-code.com/)
 			return false;
 		}
 		int checker = 0;
@@ -16,7 +20,7 @@ public class Question {
 	}
 	
 	public static boolean isUniqueChars2(String str) {
-		if (str.length() > 256) {
+		if (str.length() > 256) { // size of extended ASCII table (http://www.ascii-code.com/)
 			return false;
 		}
 		boolean[] char_set = new boolean[256];
@@ -30,6 +34,7 @@ public class Question {
 	
 	public static void main(String[] args) {
 		String[] words = {"abcde", "hello", "apple", "kite", "padle"};
+//		String[] words = {"€"}; // error on extended ASCII character
 		for (String word : words) {
 			System.out.println(word + ": " + isUniqueChars(word) + " " + isUniqueChars2(word));
 		}
