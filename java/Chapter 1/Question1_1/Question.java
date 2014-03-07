@@ -23,7 +23,11 @@ public class Question {
 		if (str.length() > 256) { // size of extended ASCII table (http://www.ascii-code.com/)
 			return false;
 		}
+		
 		boolean[] char_set = new boolean[256];
+		
+		// If it's false, this is the first time you've seen this character and you can set the slot to true.
+		// If it's true, you've already seen this character and you can immediately report that there's a duplicate.
 		for (int i = 0; i < str.length(); i++) {
 			int val = str.charAt(i);
 			if (char_set[val]) return false;
