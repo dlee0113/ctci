@@ -56,6 +56,7 @@ public class Question {
 //		if (size >= str.length()) {
 //			return str;
 //		}
+		
 		String mystr = "";
 		char last = str.charAt(0);
 		int count = 1;
@@ -72,25 +73,36 @@ public class Question {
 	}
 	
 	public static String compressBetter(String str) {
-		int size = countCompression(str);
-		if (size >= str.length()) {
-			return str;
-		}
+//		int size = countCompression(str);
+//		if (size >= str.length()) {
+//			return str;
+//		}
+		
 		StringBuffer mystr = new StringBuffer();
 		char last = str.charAt(0);
 		int count = 1;
+		
+		// start for loop from 1 since count is set to 1
 		for (int i = 1; i < str.length(); i++) {
+			// if current character matches last character, increment count by 1
+			// This condition counts number of repeated characters			
 			if (str.charAt(i) == last) {
 				count++;
-			} else {
+			}
+			// if no match, current character becomes last character
+			else {
 				mystr.append(last);
 				mystr.append(count);
+				
+				// set last to be current character being read
 				last = str.charAt(i);
+				// reset count
 				count = 1;
 			}
 		}
 		mystr.append(last);
 		mystr.append(count);
+		
 		return mystr.toString();
 	}	
 	
@@ -99,6 +111,7 @@ public class Question {
 		if (size >= str.length()) {
 			return str;
 		}
+		
 		char[] array = new char[size];
 		int index = 0;
 		char last = str.charAt(0);
@@ -117,15 +130,23 @@ public class Question {
 	}
 	
 	public static void main(String[] args) {
-		String str = "abbccccccde";
+//		String str = "abbccccccde";
+		String str = "abc";
 		int c = countCompression(str);
 		
-		String str2 = compressBad(str);
-//		String str2 = compressAlternate(str);
-//		String t = compressBetter("");
-//		System.out.println("Compression: " + t);
-		System.out.println("Old String (len = " + str.length() + "): " + str);
-		System.out.println("New String (len = " + str2.length() + "): " + str2);
-		System.out.println("Potential Compression: " + c);
+		System.out.println("str: " + str);
+		System.out.println("c: " + c);
+		
+		
+		if (c >= str.length()) {
+			String str2 = compressBad(str);
+	//		String str2 = compressAlternate(str);
+	//		String str2 = compressBetter(str);
+			
+//			System.out.println("Compression: " + t);
+			System.out.println("Old String (len = " + str.length() + "): " + str);
+			System.out.println("New String (len = " + str2.length() + "): " + str2);
+			System.out.println("Potential Compression: " + c);			
+		}
 	}
 }
